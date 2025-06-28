@@ -6,6 +6,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import TimelinePage from './pages/TimelinePage'
 import ProfilePage from './pages/ProfilePage'
 import DiscoverPage from './pages/DiscoverPage'
+import MurmurDetailPage from './pages/MurmurDetailPage'
 
 function App() {
   const styles = {
@@ -26,6 +27,7 @@ function App() {
               <Route path="/" element={<ProtectedRoute><TimelinePage /></ProtectedRoute>} />
               <Route path="/profile/:userId" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
               <Route path="/discover" element={<ProtectedRoute><DiscoverPage /></ProtectedRoute>} />
+              <Route path="/murmur/:murmurId" element={<ProtectedRoute><MurmurDetailPage /></ProtectedRoute>} />
 
 
             </Routes>
