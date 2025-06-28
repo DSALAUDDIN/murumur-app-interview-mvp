@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import TimelinePage from './pages/TimelinePage'
 import ProfilePage from './pages/ProfilePage'
+import DiscoverPage from './pages/DiscoverPage'
 
 function App() {
   const styles = {
