@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87efebbe-1701-462d-9ef5-80d6570b77ed" name="Changes" comment="feat(frontend): full check and update with notifications, user search, language context, and UI enhancements&#10;&#10;- Implemented follower update notifications, including unread/read states and real-time updates (polling/WebSocket)&#10;- Added notifications center/component for displaying updates from followed users&#10;- Integrated API calls for notifications and user search&#10;- Search functionality now allows searching users by username or name&#10;- Profile page supports view/edit and includes FollowListModal for followers/following&#10;- Added Discover page for exploring new users and trending murmurs&#10;- MurmurDetails page for full murmur view, interactions, and comments&#10;- Updated App.tsx to include language (i18n) context provider for multi-language support&#10;- Responsive design improvements across all major components&#10;- Handled loading, error, and empty states throughout the UI&#10;- Codebase prepared for future enhancements like push notifications, notification settings, and more search filters" />
+    <list default="true" id="87efebbe-1701-462d-9ef5-80d6570b77ed" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.github/pull_request_template.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MurmurCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MurmurCard.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +17,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="features" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,7 +48,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "frontend-full-check",
+    "git-widget-placeholder": "features",
     "last_opened_file_path": "J:/AlauddinWorks/Personal/Coding/murumur-app-interview-mvp/src",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

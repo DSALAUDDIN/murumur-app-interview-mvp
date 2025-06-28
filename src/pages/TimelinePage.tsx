@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import MurmurCard from '../components/MurmurCard';
 import Pagination from '../components/Pagination';
@@ -22,6 +23,7 @@ export default function TimelinePage() {
   const [lastPage, setLastPage] = useState(1);
   const [totalMurmurs, setTotalMurmurs] = useState(0);
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTimeline = async (page: number) => {
@@ -110,7 +112,12 @@ export default function TimelinePage() {
       )}
       <div>
         {murmurs.map((murmur) => (
-          <MurmurCard key={murmur.id} murmur={murmur} onLikeToggle={handleLikeToggle} />
+          <MurmurCard
+            key={murmur.id}
+            murmur={murmur}
+            onLikeToggle={handleLikeToggle}
+            onCardClick={() => navigate(`/murmur/${murmur.id}`)}
+          />
         ))}
       </div>
       <Pagination

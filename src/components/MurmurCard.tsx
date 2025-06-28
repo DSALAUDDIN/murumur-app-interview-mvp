@@ -16,9 +16,10 @@ interface Murmur {
 interface MurmurCardProps {
   murmur: Murmur;
   onLikeToggle: (murmurId: number, isLiked: boolean) => void;
+  onCardClick?: (murmurId: number) => void;
 }
 
-export default function MurmurCard({ murmur, onLikeToggle }: MurmurCardProps) {
+export default function MurmurCard({ murmur, onLikeToggle, onCardClick }: MurmurCardProps) {
   const { t } = useLanguage();
 
   const styles = {
@@ -86,14 +87,19 @@ export default function MurmurCard({ murmur, onLikeToggle }: MurmurCardProps) {
     }
   };
 
-  const handleLikeClick = () => {
+  const handleLikeClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card click when liking
     onLikeToggle(murmur.id, !murmur.isLikedByMe);
   };
 
+  const handleCardClick = () => {
+    if (onCardClick) onCardClick(murmur.id);
+  };
+
   return (
-    <div style={styles.card}>
+    <div style={styles.card} onClick={handleCardClick} tabIndex={onCardClick ? 0 : undefined} role={onCardClick ? 'button' : undefined}>
       <div style={styles.header}>
-        <Link to={`/profile/${murmur.user.id}`} style={{ textDecoration: 'none' }}>
+        <Link to={`/profile/${murmur.user.id}`} style={{ textDecoration: 'none' }} onClick={e => e.stopPropagation()}>
           <span style={styles.username}>{murmur.user.username}</span>
         </Link>
         <span style={styles.timestamp}>
