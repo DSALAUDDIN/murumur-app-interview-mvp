@@ -1,29 +1,29 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+
 
 function App() {
-  const [data, setData] = useState<any>(null)
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.post('/api/postTest')
-        console.log(res.data)
-        setData(res.data)
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      }
-    }
-    
-    fetchData()
-  }, [])
+  const styles = {
+    appContainer: {
+      backgroundColor: '#EFE7DA',
+      minHeight: '100vh',
+    },
+  };
 
   return (
-    <div>
-      <h1>Display the data obtained from API here</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </div>
-  )
+      <div style={styles.appContainer}>
+        <BrowserRouter>
+          <main>
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+
+            </Routes>
+          </main>
+        </BrowserRouter>
+      </div>
+  );
 }
 
-export default App
+export default App;
