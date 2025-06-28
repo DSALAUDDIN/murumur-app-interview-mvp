@@ -59,7 +59,7 @@ If you want to add new function after complete to implement below function, it's
 - Other User Detail
   - User information (e.g. name, followCount, followedCount)
   - List of the user's murmurs
-
+ 
 ### Point
 
 - You can proceed with the implementation freely.
