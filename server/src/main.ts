@@ -1,15 +1,18 @@
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import helmet from 'helmet';
-import cors from 'cors';
-
+import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
-  // ミドルウェアの設定
+
   app.use(helmet());
-  app.use(cors());
-  
+  app.enableCors();
+
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,
+  }));
+
   await app.listen(3001);
   console.log('Example app listening on port 3001!');
 }

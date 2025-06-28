@@ -1,0 +1,22 @@
+###
+# @name createMurmur
+# Create a new murmur as the logged-in user.
+# NOTE: You must run the "loginUser" request from auth.http first
+# to get a valid authToken.
+POST http://localhost:3001/api/me/murmurs
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "text": "This is my first murmur! #NestJS #React"
+}
+
+###
+# @name createMurmurFail
+# (Failure Test) Try to create a murmur without a token.
+POST http://localhost:3001/api/me/murmurs
+Content-Type: application/json
+
+{
+  "text": "This murmur should fail."
+}

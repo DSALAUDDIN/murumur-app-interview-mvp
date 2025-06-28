@@ -1,29 +1,43 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import TimelinePage from './pages/TimelinePage';
+import ProfilePage from './pages/ProfilePage';
+import DiscoverPage from './pages/DiscoverPage';
+import SearchPage from './pages/SearchPage';
+import MurmurDetailPage from './pages/MurmurDetailPage';
+import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
-  const [data, setData] = useState<any>(null)
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.post('/api/postTest')
-        console.log(res.data)
-        setData(res.data)
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      }
-    }
-    
-    fetchData()
-  }, [])
+  const styles = {
+    appContainer: {
+      backgroundColor: '#EFE7DA',
+      minHeight: '100vh',
+    },
+  };
 
   return (
-    <div>
-      <h1>Display the data obtained from API here</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </div>
-  )
+    <LanguageProvider>
+      <div style={styles.appContainer}>
+        <BrowserRouter>
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/" element={<ProtectedRoute><TimelinePage /></ProtectedRoute>} />
+              <Route path="/profile/:userId" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+              <Route path="/discover" element={<ProtectedRoute><DiscoverPage /></ProtectedRoute>} />
+              <Route path="/search" element={<ProtectedRoute><SearchPage /></ProtectedRoute>} />
+              <Route path="/murmur/:murmurId" element={<ProtectedRoute><MurmurDetailPage /></ProtectedRoute>} />
+            </Routes>
+          </main>
+        </BrowserRouter>
+      </div>
+    </LanguageProvider>
+  );
 }
 
-export default App
+export default App;

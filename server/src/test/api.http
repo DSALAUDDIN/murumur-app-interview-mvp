@@ -1,0 +1,203 @@
+################################
+# 🧑‍💻 AUTHENTICATION ENDPOINTS
+################################
+
+### Register userAlauddin
+# @name registerUser1
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "userAlauddin",
+  "email": "useralauddin@example.com",
+  "password": "password123"
+}
+
+### Login userAlauddin
+# @name loginUser1
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "useralauddin@example.com",
+  "password": "password123"
+}
+> {%
+    client.global.set("userOneToken", response.body.accessToken);
+%}
+
+
+### Register userJony
+# @name registerUser2
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "userJony",
+  "email": "userjony@example.com",
+  "password": "password456"
+}
+> {%
+    client.global.set("userTwoId", response.body.id);
+%}
+
+### Login userJony
+# @name loginUser2
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "userjony@example.com",
+  "password": "password456"
+}
+> {%
+    client.global.set("userTwoToken", response.body.accessToken);
+%}
+
+
+### Register userRaisa
+# @name registerUser3
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "userRaisa",
+  "email": "userrisa@example.com",
+  "password": "password789"
+}
+> {%
+    client.global.set("userThreeId", response.body.id);
+%}
+
+### Login userRaisa
+# @name loginUser3
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "userrisa@example.com",
+  "password": "password789"
+}
+> {%
+    client.global.set("userThreeToken", response.body.accessToken);
+%}
+
+
+### Register userOmar
+# @name registerUser4
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "userOmar",
+  "email": "useromar@example.com",
+  "password": "password000"
+}
+> {%
+    client.global.set("userFourId", response.body.id);
+%}
+
+### Login userOmar
+# @name loginUser4
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "useromar@example.com",
+  "password": "password000"
+}
+> {%
+    client.global.set("userFourToken", response.body.accessToken);
+%}
+
+
+################################
+# 📣 MURMUR ENDPOINTS
+################################
+
+### Create a murmur (userAlauddin)
+# @name createMurmurUser1
+POST http://localhost:3001/api/me/murmurs
+Content-Type: application/json
+Authorization: Bearer {{userOneToken}}
+
+{
+  "text": "Murmur from userAlauddin"
+}
+> {%
+    client.global.set("murmurId", response.body.id);
+%}
+
+### userJony tries to delete userAlauddin’s murmur (❌ should fail)
+# @name deleteMurmurFail
+DELETE http://localhost:3001/api/me/murmurs/{{murmurId}}
+Authorization: Bearer {{userTwoToken}}
+
+### userAlauddin deletes their own murmur (✅ success)
+# @name deleteMurmurSuccess
+DELETE http://localhost:3001/api/me/murmurs/{{murmurId}}
+Authorization: Bearer {{userOneToken}}
+
+### userAlauddin tries to delete same murmur again (❌ 404 expected)
+# @name deleteMurmurNotFound
+DELETE http://localhost:3001/api/me/murmurs/{{murmurId}}
+Authorization: Bearer {{userOneToken}}
+
+
+################################
+# 👥 FOLLOW/UNFOLLOW
+################################
+
+### userAlauddin follows userJony
+# @name followUser2
+POST http://localhost:3001/api/users/{{userTwoId}}/follow
+Authorization: Bearer {{userOneToken}}
+
+### userAlauddin unfollows userJony
+# @name unfollowUser2
+DELETE http://localhost:3001/api/users/{{userTwoId}}/follow
+Authorization: Bearer {{userOneToken}}
+
+### userRaisa follows userOmar
+# @name followUser4
+POST http://localhost:3001/api/users/{{userFourId}}/follow
+Authorization: Bearer {{userThreeToken}}
+
+
+################################
+# 📰 TIMELINE
+################################
+
+### userJony creates a murmur
+# @name createMurmurUser2
+POST http://localhost:3001/api/me/murmurs
+Content-Type: application/json
+Authorization: Bearer {{userTwoToken}}
+
+{
+  "text": "Murmur from userJony!"
+}
+> {%
+    client.global.set("murmurId", response.body.id);
+%}
+
+### userAlauddin gets timeline (should include followed users' murmurs)
+# @name getTimelineUser1
+GET http://localhost:3001/api/murmurs/timeline?page=1&limit=5
+Authorization: Bearer {{userOneToken}}
+
+---
+
+################################
+# ❤️ LIKE / UNLIKE
+################################
+
+### userRaisa likes userJony's murmur
+# @name likeMurmurByUser3
+POST http://localhost:3001/api/murmurs/{{murmurId}}/like
+Authorization: Bearer {{userThreeToken}}
+
+### userRaisa unlikes the murmur
+# @name unlikeMurmurByUser3
+DELETE http://localhost:3001/api/murmurs/{{murmurId}}/unlike
+Authorization: Bearer {{userThreeToken}}
