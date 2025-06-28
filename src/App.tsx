@@ -4,6 +4,7 @@ import RegisterPage from './pages/RegisterPage';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import TimelinePage from './pages/TimelinePage'
+import ProfilePage from './pages/ProfilePage'
 
 function App() {
   const styles = {
@@ -22,6 +23,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/" element={<ProtectedRoute><TimelinePage /></ProtectedRoute>} />
+              <Route path="/profile/:userId" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
 
             </Routes>
           </main>
