@@ -1,13 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import TimelinePage from './pages/TimelinePage';
+import ProfilePage from './pages/ProfilePage';
+import DiscoverPage from './pages/DiscoverPage';
+import SearchPage from './pages/SearchPage';
+import MurmurDetailPage from './pages/MurmurDetailPage';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
-import TimelinePage from './pages/TimelinePage'
-import ProfilePage from './pages/ProfilePage'
-import DiscoverPage from './pages/DiscoverPage'
-import MurmurDetailPage from './pages/MurmurDetailPage'
-import SearchPage from './pages/SearchPage'
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
   const styles = {
@@ -18,6 +19,7 @@ function App() {
   };
 
   return (
+    <LanguageProvider>
       <div style={styles.appContainer}>
         <BrowserRouter>
           <Navbar />
@@ -28,14 +30,13 @@ function App() {
               <Route path="/" element={<ProtectedRoute><TimelinePage /></ProtectedRoute>} />
               <Route path="/profile/:userId" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
               <Route path="/discover" element={<ProtectedRoute><DiscoverPage /></ProtectedRoute>} />
-              <Route path="/murmur/:murmurId" element={<ProtectedRoute><MurmurDetailPage /></ProtectedRoute>} />
               <Route path="/search" element={<ProtectedRoute><SearchPage /></ProtectedRoute>} />
-
-
+              <Route path="/murmur/:murmurId" element={<ProtectedRoute><MurmurDetailPage /></ProtectedRoute>} />
             </Routes>
           </main>
         </BrowserRouter>
       </div>
+    </LanguageProvider>
   );
 }
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Notifications from './Notifications';
 import { useLanguage } from '../context/LanguageContext';
 
 // Japanese-inspired color palette & patterns
@@ -143,7 +144,7 @@ export default function Navbar() {
               <NavLinkJp to="/" label={t.timeline} />
               <NavLinkJp to="/discover" label={t.discover} />
               <NavLinkJp to={`/profile/${userId}`} label={t.myProfile} />
-
+              <Notifications />
               <button
                 onClick={handleLogout}
                 style={{
