@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87efebbe-1701-462d-9ef5-80d6570b77ed" name="Changes" comment="updated app.tsx">
-      <change afterPath="$PROJECT_DIR$/src/pages/MurmurDetailPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/SearchPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MurmurCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MurmurCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/TimelinePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/TimelinePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MurmurDetailPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MurmurDetailPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,21 +23,21 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "DSALAUDDIN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DSALAUDDIN&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/DSALAUDDIN/murumur-app-interview-mvp.git",
-    "accountId": "e8fa9d51-479c-457c-a378-504bad28b0c4"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DSALAUDDIN/murumur-app-interview-mvp.git&quot;,
+    &quot;accountId&quot;: &quot;e8fa9d51-479c-457c-a378-504bad28b0c4&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2z8hz5hWoAd0NWJF0jZPqgmHZQF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -50,14 +49,14 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "fontend-murmurdetails",
+    "git-widget-placeholder": "frontend-search",
     "last_opened_file_path": "J:/AlauddinWorks/Personal/Coding/murumur-app-interview-mvp/src/pages",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\User\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "prettierjs.PrettierConfiguration.Package": "J:\\AlauddinWorks\\Personal\\Coding\\murumur-app-interview-mvp\\server\\node_modules\\prettier",
     "ts.external.directory.path": "J:\\AlauddinWorks\\Personal\\Coding\\murumur-app-interview-mvp\\server\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }

@@ -7,6 +7,7 @@ import TimelinePage from './pages/TimelinePage'
 import ProfilePage from './pages/ProfilePage'
 import DiscoverPage from './pages/DiscoverPage'
 import MurmurDetailPage from './pages/MurmurDetailPage'
+import SearchPage from './pages/SearchPage'
 
 function App() {
   const styles = {
@@ -28,6 +29,7 @@ function App() {
               <Route path="/profile/:userId" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
               <Route path="/discover" element={<ProtectedRoute><DiscoverPage /></ProtectedRoute>} />
               <Route path="/murmur/:murmurId" element={<ProtectedRoute><MurmurDetailPage /></ProtectedRoute>} />
+              <Route path="/search" element={<ProtectedRoute><SearchPage /></ProtectedRoute>} />
 
 
             </Routes>
