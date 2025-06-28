@@ -24,6 +24,8 @@ function App() {
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/" element={<ProtectedRoute><TimelinePage /></ProtectedRoute>} />
               <Route path="/profile/:userId" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+              <Route path="/discover" element={<ProtectedRoute><DiscoverPage /></ProtectedRoute>} />
+
 
             </Routes>
           </main>
