@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-
+import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   const styles = {
@@ -14,11 +15,11 @@ function App() {
   return (
       <div style={styles.appContainer}>
         <BrowserRouter>
+          <Navbar />
           <main>
             <Routes>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
-
             </Routes>
           </main>
         </BrowserRouter>
