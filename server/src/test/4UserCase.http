@@ -1,0 +1,205 @@
+```http
+################################
+# AUTHENTICATION - 4 USERS (Story-based)
+################################
+
+### Alauddin enters the community
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "userAlauddin",
+  "email": "useralauddin@example.com",
+  "password": "password123"
+}
+
+### Alauddin logs in
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "useralauddin@example.com",
+  "password": "password123"
+}
+> {%
+    client.global.set("userOneToken", response.body.accessToken);
+    client.global.set("userOneId", response.body.id);
+%}
+
+### Jony joins the platform
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "userJony",
+  "email": "userjony@example.com",
+  "password": "password456"
+}
+
+### Jony logs in
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "userjony@example.com",
+  "password": "password456"
+}
+> {%
+    client.global.set("userTwoToken", response.body.accessToken);
+    client.global.set("userTwoId", response.body.id);
+%}
+
+### Sara enters with peace
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "userSara",
+  "email": "usersara@example.com",
+  "password": "password789"
+}
+
+### Sara logs in
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "usersara@example.com",
+  "password": "password789"
+}
+> {%
+    client.global.set("userThreeToken", response.body.accessToken);
+    client.global.set("userThreeId", response.body.id);
+%}
+
+### Mizan joins last
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "userMizan",
+  "email": "usermizan@example.com",
+  "password": "password321"
+}
+
+### Mizan logs in
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "usermizan@example.com",
+  "password": "password321"
+}
+> {%
+    client.global.set("userFourToken", response.body.accessToken);
+    client.global.set("userFourId", response.body.id);
+%}
+
+################################
+# MURMUR CREATION - A New Voice for Each
+################################
+
+### Alauddin says Bismillah
+POST http://localhost:3001/api/me/murmurs
+Content-Type: application/json
+Authorization: Bearer {{userOneToken}}
+
+{
+  "text": "userOne's murmur: Bismillah!"
+}
+> {%
+    client.global.set("murmurOneId", response.body.id);
+%}
+
+### Jony greets with Salam
+POST http://localhost:3001/api/me/murmurs
+Content-Type: application/json
+Authorization: Bearer {{userTwoToken}}
+
+{
+  "text": "userTwo's murmur: Assalamu Alaikum!"
+}
+> {%
+    client.global.set("murmurTwoId", response.body.id);
+%}
+
+### Sara praises Allah
+POST http://localhost:3001/api/me/murmurs
+Content-Type: application/json
+Authorization: Bearer {{userThreeToken}}
+
+{
+  "text": "userThree's murmur: Alhamdulillah!"
+}
+> {%
+    client.global.set("murmurThreeId", response.body.id);
+%}
+
+### Mizan glorifies Allah
+POST http://localhost:3001/api/me/murmurs
+Content-Type: application/json
+Authorization: Bearer {{userFourToken}}
+
+{
+  "text": "userFour's murmur: SubhanAllah!"
+}
+> {%
+    client.global.set("murmurFourId", response.body.id);
+%}
+
+################################
+# FOLLOWING RELATIONS - Bonds Formed
+################################
+
+### Alauddin follows Jony
+POST http://localhost:3001/api/users/{{userTwoId}}/follow
+Authorization: Bearer {{userOneToken}}
+
+### Alauddin follows Sara
+POST http://localhost:3001/api/users/{{userThreeId}}/follow
+Authorization: Bearer {{userOneToken}}
+
+### Jony follows Alauddin
+POST http://localhost:3001/api/users/{{userOneId}}/follow
+Authorization: Bearer {{userTwoToken}}
+
+### Sara follows Mizan
+POST http://localhost:3001/api/users/{{userFourId}}/follow
+Authorization: Bearer {{userThreeToken}}
+
+################################
+# LIKES - Spreading Love
+################################
+
+### Jony likes Alauddin's murmur
+POST http://localhost:3001/api/murmurs/{{murmurOneId}}/like
+Authorization: Bearer {{userTwoToken}}
+
+### Sara likes Jony's murmur
+POST http://localhost:3001/api/murmurs/{{murmurTwoId}}/like
+Authorization: Bearer {{userThreeToken}}
+
+### Mizan likes Sara's murmur
+POST http://localhost:3001/api/murmurs/{{murmurThreeId}}/like
+Authorization: Bearer {{userFourToken}}
+
+################################
+# TIMELINE - Stories Seen
+################################
+
+### Alauddin's timeline - sees Jony & Sara's murmurs
+GET http://localhost:3001/api/murmurs/timeline?page=1&limit=10
+Authorization: Bearer {{userOneToken}}
+
+### Jony's timeline - sees Alauddin's murmur
+GET http://localhost:3001/api/murmurs/timeline?page=1&limit=10
+Authorization: Bearer {{userTwoToken}}
+
+### Sara's timeline - sees Mizan's murmur
+GET http://localhost:3001/api/murmurs/timeline?page=1&limit=10
+Authorization: Bearer {{userThreeToken}}
+
+### Mizan's timeline - his own murmur only
+GET http://localhost:3001/api/murmurs/timeline?page=1&limit=10
+Authorization: Bearer {{userFourToken}}
+```
